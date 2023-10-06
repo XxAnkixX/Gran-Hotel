@@ -1,7 +1,7 @@
 package proyectofinal.Entidades;
 
 public class Categoria {
-    private int codigo; 
+    private int idCategoria; 
     private int maxP, cantC;
     private int tipoC;
     private double precio;
@@ -11,8 +11,8 @@ public class Categoria {
     
     
 
-    public Categoria(int codigo, int maxP, int cantC, int tipoC, double precio) {
-        this.codigo = codigo;
+    public Categoria(int idCategoria, int maxP, int cantC, int tipoC, double precio) {
+        this.idCategoria = idCategoria;
         this.maxP = maxP;
         this.cantC = cantC;
         this.tipoC = tipoC;
@@ -20,11 +20,11 @@ public class Categoria {
     }
 
     public int getCodigo() {
-        return codigo;
+        return idCategoria;
     }
 
     public void setCodigo(int codigo) {
-        this.codigo = codigo;
+        this.idCategoria = codigo;
     }
 
     public int getMaxtP() {
