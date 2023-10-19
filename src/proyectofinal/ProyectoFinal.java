@@ -3,8 +3,10 @@ package proyectofinal;
 import java.sql.Connection;
 import proyectofinal.AccesoADatos.CategoriaData;
 import proyectofinal.AccesoADatos.Conexion;
+import proyectofinal.AccesoADatos.habitacionData;
 import proyectofinal.AccesoADatos.huespedData;
 import proyectofinal.Entidades.Categoria;
+import proyectofinal.Entidades.habitaciones;
 import proyectofinal.Entidades.huesped;
 
 public class ProyectoFinal {
@@ -12,16 +14,11 @@ public class ProyectoFinal {
     public static void main(String[] args) {
         Conexion.getConexion();
         huespedData x= new huespedData();
-        huesped ej= new huesped(123, "Rodriguez", "Santiago", "Calle 2", "ej@hotmail.com", 1234567, true);
-        huesped santiago= new huesped(321, "Gonzalez", "Horacio", "Calle 3", "horaciog@gmail.com", 7654321, true);
-        huesped prueba= new huesped(101, "Ejemplo", "Damian", "Calle 4", "p@hotmail.com", 2345678, true);
-        //x.agregarHuesped(ej);
-        //x.agregarHuesped(santiago);
-        //x.agregarHuesped(prueba);
-        huesped ejemplo= new huesped(1234567, "Gonzalez", "Uriel", "Calle 7", "ejemplo@gmail.com", 1176588932, true);
-        //x.agregarHuesped(ejemplo);
-        
         CategoriaData y= new CategoriaData();
+        habitacionData z= new habitacionData();
+        
+        habitaciones test= new habitaciones(221, false);
+        z.agregarHabitacion(test);
         
     Categoria A = new Categoria(211, 2, 1, 1, 0);
     Categoria B = new Categoria(221, 2, 2, 1, 0);

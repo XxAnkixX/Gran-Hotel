@@ -22,15 +22,15 @@ public class habitacionData {
         try {
             PreparedStatement ps= con.prepareStatement(sql);
             ps.setInt(1, habitaciones.getTipo());
-            ps.setBoolean(2, false);
-            ps.executeUpdate(sql);
+            ps.setBoolean(2, habitaciones.isDisponible());
+            ps.executeUpdate();
             ResultSet rs= ps.getGeneratedKeys();
             if(rs.next()){
                 habitaciones.setIdHabitacion(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Habitación Guardada");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de habitaciones");
         }
     }
     
