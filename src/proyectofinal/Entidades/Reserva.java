@@ -8,7 +8,7 @@ public class Reserva {
     private habitaciones cuarto;
     private int cantP;
     private Date fechaEntrada, fechaSalida;
-    private double preccio;
+    private double precio;
 
     public Reserva() {
     }
@@ -20,7 +20,7 @@ public class Reserva {
         this.cantP = cantP;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
-        this.preccio = preccio;
+        this.precio = preccio;
     }
     
 
@@ -30,7 +30,7 @@ public class Reserva {
         this.cantP = cantP;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
-        this.preccio = preccio;
+        this.precio = preccio;
     }
 
     public int getIdReserva() {
@@ -83,11 +83,11 @@ public class Reserva {
     }
 
     public double getPreccio() {
-        return preccio;
+        return precio;
     }
 
-    public void setPreccio(double preccio) {
-        this.preccio = preccio;
+    public void setPreccio(double precio) {
+        this.precio = precio;
     }
     
     
