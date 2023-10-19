@@ -2,19 +2,19 @@ package proyectofinal.Entidades;
 
 public class habitaciones {
     private int idHabitacion;
-    private Categoria tipo;
+    private int tipo;
     private boolean disponible;
 
     public habitaciones() {
     }
 
-    public habitaciones(int idHabitacion, Categoria tipo, boolean disponible) {
+    public habitaciones(int idHabitacion, int tipo, boolean disponible) {
         this.idHabitacion = idHabitacion;
         this.tipo = tipo;
         this.disponible = disponible;
     }
 
-    public habitaciones(Categoria tipo, boolean disponible) {
+    public habitaciones(int tipo, boolean disponible) {
         this.tipo = tipo;
         this.disponible = disponible;
     }
@@ -27,11 +27,11 @@ public class habitaciones {
         this.idHabitacion = idHabitacion;
     }
 
-    public Categoria getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
-    public void setTipo(Categoria tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
 
