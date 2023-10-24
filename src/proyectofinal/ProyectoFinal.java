@@ -51,15 +51,15 @@ public class ProyectoFinal {
 //        y.agregarCategoria(I);
 //        y.agregarCategoria(J);
 //        y.agregarCategoria(K);
-
+        CategoriaData modPrecio = new CategoriaData();
         habitacionData data = new habitacionData();
 //        habitaciones habitacionSimple1 = new habitaciones(211, true);
-        habitaciones habitacionSimple2 = new habitaciones(221, true);
-        habitaciones habitacionSimple3 = new habitaciones(212, true);
+//        habitaciones habitacionSimple2 = new habitaciones(221, true);
+//        habitaciones habitacionSimple3 = new habitaciones(212, true);
         int i;
-//        for (i = 1; i <= 35; i++) {
-//            data.agregarHabitacion(habitacionSimple1);
-//        }
+        for (i = 1; i <= 35; i++) {
+            data.agregarHabitacion(habitacionSimple1);
+        }
 
         
         for (i = 36; i <= 70; i++) {

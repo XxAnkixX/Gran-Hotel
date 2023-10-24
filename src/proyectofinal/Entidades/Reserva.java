@@ -13,24 +13,24 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva(int idReserva, huesped cliente, habitaciones cuarto, int cantP, Date fechaEntrada, Date fechaSalida, double preccio) {
+    public Reserva(int idReserva, huesped cliente, habitaciones cuarto, int cantP, Date fechaEntrada, Date fechaSalida, double precio) {
         this.idReserva = idReserva;
         this.cliente = cliente;
         this.cuarto = cuarto;
         this.cantP = cantP;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
-        this.precio = preccio;
+        this.precio = precio;
     }
     
 
-    public Reserva(huesped cliente, habitaciones cuarto, int cantP, Date fechaEntrada, Date fechaSalida, double preccio) {
+    public Reserva(huesped cliente, habitaciones cuarto, int cantP, Date fechaEntrada, Date fechaSalida, double precio) {
         this.cliente = cliente;
         this.cuarto = cuarto;
         this.cantP = cantP;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
-        this.precio = preccio;
+        this.precio = precio;
     }
 
     public int getIdReserva() {
@@ -82,11 +82,11 @@ public class Reserva {
         this.fechaSalida = fechaSalida;
     }
 
-    public double getPreccio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPreccio(double precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
     

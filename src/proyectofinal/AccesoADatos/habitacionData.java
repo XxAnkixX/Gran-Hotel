@@ -35,6 +35,7 @@ public class habitacionData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de habitaciones.");
         }
     }
+    
 
     public void cambiarPrecio(Categoria categoria) {
         String sql = "UPDATE categoria SET precio WHERE codigo= ?";
