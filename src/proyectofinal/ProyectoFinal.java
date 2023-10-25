@@ -3,6 +3,8 @@ package proyectofinal;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
 import proyectofinal.AccesoADatos.CategoriaData;
 import proyectofinal.AccesoADatos.Conexion;
 import proyectofinal.AccesoADatos.ReservaData;
@@ -117,12 +119,19 @@ public class ProyectoFinal {
 //            
 //            data.agregarHabitacion(habitacionSuite2);
 //        }
-    huesped P= x.buscarHuespedxDNI(1234567);
-    habitaciones B= data.buscarHabitacionxID(1);
-    
-    ReservaData reservacion= new ReservaData();
-    Reserva vacaciones= new Reserva(P, B, 2, LocalDate.of(2023, 10, 24), LocalDate.of(2023, 10, 31));
-    reservacion.agregarReserva(vacaciones);
+List<habitaciones> listita= new ArrayList<>();
+listita= data.listarHabitacionesDisponibles();
+for (habitaciones habitacion : listita){
+    System.out.println(habitacion);
+    System.out.println(habitacion.getPrecio());
+}
+
+//    huesped P= x.buscarHuespedxDNI(1234567);
+//    habitaciones B= data.buscarHabitacionxID(1);
+//    
+//    ReservaData reservacion= new ReservaData();
+//    Reserva vacaciones= new Reserva(P, B, 2, LocalDate.of(2023, 10, 24), LocalDate.of(2023, 10, 31));
+//    reservacion.agregarReserva(vacaciones);
     }
 
 }

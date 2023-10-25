@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -72,6 +75,27 @@ public class habitacionData {
             JOptionPane.showMessageDialog(null, "Error en acceder a la tabla");
         }
         return habitacion;
+    }
+    
+    public List<habitaciones> listarHabitacionesDisponibles(){
+        String sql= "SELECT idHabitacion, tipo, Disponibilidad, precio FROM habitaciones WHERE Disponibilidad= 1";
+        ArrayList<habitaciones> listaHabitacion= new ArrayList<>();
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ResultSet rs= ps.executeQuery();
+            while (rs.next()){
+                habitaciones Habitacion= new habitaciones();
+                Habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+                Habitacion.setTipo(rs.getInt("tipo"));
+                Habitacion.setDisponible(rs.getBoolean("Disponibilidad"));
+                Habitacion.setPrecio(rs.getDouble("precio"));
+                listaHabitacion.add(Habitacion);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
+        }
+        return listaHabitacion;
     }
 
 //  

@@ -11,6 +11,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -24,22 +26,6 @@ public class ReservaData {
 
     public ReservaData() {
         con = Conexion.getConexion();
-    }
-
-    public void chequearReserva(Reserva reserva, huesped huesped, habitaciones habitacion) {
-        String sql = "SELECT FROM `habitaciones` WHERE idHabitacion = ? AND 'Disponibilidad' = true";
-        try {
-
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, habitacion.getIdHabitacion());
-            ResultSet rs = ps.executeQuery();
-
-            if (!rs.next()) {
-                JOptionPane.showMessageDialog(null, "La habitacion no está disponible.");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
-        }
     }
 
     public void agregarReserva(Reserva reserva) {
@@ -62,8 +48,7 @@ public class ReservaData {
             ps.setDouble(6, reserva.getCuarto().getPrecio() * cant);
             ps.executeUpdate();
             ResultSet rs= ps.getGeneratedKeys();
-
-            if (!rs.next()) {
+            if (rs.next()) {
                 reserva.setIdReserva(rs.getInt(1));
                 String ej= "UPDATE habitaciones SET Disponibilidad WHERE idHabitacion=?";
                 ps.setBoolean(1, false);
