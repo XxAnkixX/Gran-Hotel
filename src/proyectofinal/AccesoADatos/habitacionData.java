@@ -24,7 +24,7 @@ public class habitacionData {
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, habitaciones.getTipo());
-            ps.setBoolean(2, false);
+            ps.setBoolean(2, true);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -49,6 +49,29 @@ public class habitacionData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
         }
+    }
+    
+    public habitaciones buscarHabitacionxID(int ID){
+        String sql= "SELECT idHabitacion, tipo, Disponibilidad, precio FROM habitaciones WHERE idHabitacion= ?";
+        habitaciones habitacion= null;
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ps.setInt(1, ID);
+            ResultSet rs= ps.executeQuery();
+            if(rs.next()){
+                habitacion= new habitaciones();
+                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+                habitacion.setTipo(rs.getInt("tipo"));
+                habitacion.setDisponible(rs.getBoolean("Disponibilidad"));
+                habitacion.setPrecio(rs.getDouble("precio"));
+            }else{
+                JOptionPane.showMessageDialog(null, "No existe dicha habitacion");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en acceder a la tabla");
+        }
+        return habitacion;
     }
 
 //  

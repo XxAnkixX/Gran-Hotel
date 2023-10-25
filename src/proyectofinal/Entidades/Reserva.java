@@ -1,36 +1,34 @@
 package proyectofinal.Entidades;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Reserva {
     private int idReserva;
     private huesped cliente;
     private habitaciones cuarto;
     private int cantP;
-    private Date fechaEntrada, fechaSalida;
+    private LocalDate fechaEntrada, fechaSalida;
     private double precio;
 
     public Reserva() {
     }
 
-    public Reserva(int idReserva, huesped cliente, habitaciones cuarto, int cantP, Date fechaEntrada, Date fechaSalida, double precio) {
+    public Reserva(int idReserva, huesped cliente, habitaciones cuarto, int cantP, LocalDate fechaEntrada, LocalDate fechaSalida) {
         this.idReserva = idReserva;
         this.cliente = cliente;
         this.cuarto = cuarto;
         this.cantP = cantP;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
-        this.precio = precio;
     }
     
 
-    public Reserva(huesped cliente, habitaciones cuarto, int cantP, Date fechaEntrada, Date fechaSalida, double precio) {
+    public Reserva(huesped cliente, habitaciones cuarto, int cantP, LocalDate fechaEntrada, LocalDate fechaSalida) {
         this.cliente = cliente;
         this.cuarto = cuarto;
         this.cantP = cantP;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
-        this.precio = precio;
     }
 
     public int getIdReserva() {
@@ -66,19 +64,19 @@ public class Reserva {
         this.cantP = cantP;
     }
 
-    public Date getFechaEntrada() {
+    public LocalDate getFechaEntrada() {
         return fechaEntrada;
     }
 
-    public void setFechaEntrada(Date fechaEntrada) {
+    public void setFechaEntrada(LocalDate fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
 
-    public Date getFechaSalida() {
+    public LocalDate getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(Date fechaSalida) {
+    public void setFechaSalida(LocalDate fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 

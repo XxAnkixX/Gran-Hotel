@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.Period;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -41,36 +42,38 @@ public class ReservaData {
         }
     }
 
-    public void agregarReserva(Reserva reserva, huesped huesped, habitaciones habitacion) {
+    public void agregarReserva(Reserva reserva) {
 
-        String sql = "INSERT INTO reservas (idReserva, idHuesped, cantidadPersonas, fechaEntrada, fechaSalida, importeTotal) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO reserva ( idHuesped, idHabitacion, cantidadPersonas, fechaEntrada, fechaSalida, importeTotal) VALUES (?, ?, ?, ?, ?, ?)";
         try {
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, huesped.getDNI());
-            ps.setInt(2, habitacion.getIdHabitacion());
+            ps.setInt(1, reserva.getCliente().getIdHuesped());
+            ps.setInt(2, reserva.getCuarto().getIdHabitacion());
             ps.setInt(3, reserva.getCantP());
             //--------FECHA ENTRADA-SALIDA-----------------
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String fechaEntrada = dateFormat.format(reserva.getFechaEntrada());
-            String fechaSalida = dateFormat.format(reserva.getFechaSalida());
-            
-            Duration duracion = Duration.between(reserva.getFechaEntrada.atStartOfDay(), reserva.getFechaSalida.atStartOfDay());
-            ps.setDate(4, java.sql.Date.valueOf(fechaEntrada));
-            ps.setDate(5, java.sql.Date.valueOf(fechaSalida));
-            ps.setDouble(6, habitacion.getPrecio() * duracion);
-            
-            
-            
-
-            ResultSet rs = ps.executeQuery();
+            Period duracion = Period.between(reserva.getFechaEntrada(), reserva.getFechaSalida());
+            ps.setDate(4, java.sql.Date.valueOf(reserva.getFechaEntrada()));
+            ps.setDate(5, java.sql.Date.valueOf(reserva.getFechaSalida()));
+            System.out.println(duracion.getDays());
+            Double cant=(double) duracion.getDays();
+            System.out.println(reserva.getCuarto().getPrecio()*cant);
+            ps.setDouble(6, reserva.getCuarto().getPrecio() * cant);
+            ps.executeUpdate();
+            ResultSet rs= ps.getGeneratedKeys();
 
             if (!rs.next()) {
+                reserva.setIdReserva(rs.getInt(1));
+                String ej= "UPDATE habitaciones SET Disponibilidad WHERE idHabitacion=?";
+                ps.setBoolean(1, false);
+                JOptionPane.showMessageDialog(null, "Reserva completada");
+            }else{
                 JOptionPane.showMessageDialog(null, "La habitacion no está disponible.");
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de reservas "+ex.getMessage());
         }
     }
 }

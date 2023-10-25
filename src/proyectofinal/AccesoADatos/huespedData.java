@@ -82,7 +82,7 @@ public class huespedData {
             ResultSet rs= ps.executeQuery();
             if (rs.next()){
                 Huesped= new huesped();
-                Huesped.setIdHuesped(rs.getInt("idAlumno"));
+                Huesped.setIdHuesped(rs.getInt("idHuesped"));
                 Huesped.setDNI(dni);
                 Huesped.setApellido(rs.getString("apellido"));
                 Huesped.setNombre(rs.getString("nombre"));
@@ -95,7 +95,7 @@ public class huespedData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla del huesped");
         }
         return Huesped;
     }
